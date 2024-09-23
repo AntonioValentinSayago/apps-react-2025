@@ -2,7 +2,9 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from "./components/Login";
 import Dashboard from './components/Dashboard';
+import Cart from './components/Cart';
 
+import { CartProvider } from './context/CartProvider ';
 function App() {
 
   const PrivateRoute = ({ children }) => {
@@ -12,17 +14,28 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
+      <CartProvider>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <PrivateRoute>
+                <Cart />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+
+      </CartProvider>
     </Router>
   )
 }

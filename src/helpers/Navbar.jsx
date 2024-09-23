@@ -12,6 +12,11 @@ const Navbar = () => {
         navigate('/');
     }
 
+
+    const handleViewCart = () => {
+        navigate('/cart');
+    };
+
     return (
         <nav className="bg-gray-900 text-white p-4 flex justify-between items-center">
             {/* Logo Section */}
@@ -38,6 +43,7 @@ const Navbar = () => {
                     {/* Notification Badge */}
                     <span className="absolute -top-1 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
                 </div>
+                <button onClick={handleViewCart}>Ver Carrito </button>
                 {/* Profile Picture */}
                 <div className="w-8 h-8 rounded-full bg-blue-500">
                     <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/e40b6ea6361a1abe28f32e7910f63b66/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
