@@ -11,8 +11,8 @@ const Login = () => {
     const handleLogin = async (event) => {
         event.preventDefault();
 
-        // const isAuthenticated = await authenticateUser(username, password);
-        const isAuthenticated = await authenticateUser('contacto@tecgurus.net', 'password');
+        // const isAuthenticated = await authenticateUser('contacto@tecgurus.net', 'password');
+        const isAuthenticated = await authenticateUser(username, password);
         if (isAuthenticated) {
             // Redirigir al usuario o cargar productos
             console.log('Autenticación exitosa');
@@ -26,46 +26,46 @@ const Login = () => {
 
 
     return (
-        <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
-            </div>
-
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="min-h-screen flex items-center justify-center">
+            <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+                <div className="flex justify-center mb-8">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5408/5408490.png" alt="Logo" className="w-30 h-20" />
+                </div>
+                <h1 className="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Iniciar sesión</h1>
                 <form
-                    className="space-y-6"
                     onSubmit={handleLogin}
                 >
-                    <div>
-                        <label className="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                        <div className="mt-2">
-                            <input id="email" name="email" type="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </div>
+                    <div className="mb-6">
+                        <label className="block mb-2 text-sm text-gray-600">Correo electrónico</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" 
+                            required 
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
-
-                    <div>
-                        <div className="flex items-center justify-between">
-                            <label className="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                            <div className="text-sm">
-                                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-                            </div>
-                        </div>
-                        <div className="mt-2">
-                            <input id="password" name="password" type="password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
+                    <div className="mb-6">
+                        <label className="block mb-2 text-sm text-gray-600">Contraseña</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                         />
+                        <a href="#" className="block text-right text-xs text-cyan-600 mt-2">¿Olvidaste tu contraseña?</a>
                     </div>
-
-                    <div>
-                        <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
-                    </div>
+                    <button type="submit" className="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-6">Acceso</button>
                 </form>
-
+                <div className="text-center">
+                    <p className="text-sm">¿No tienes una cuenta? <a href="#" className="text-cyan-600">Regístrate ahora</a></p>
+                </div>
+                <p className="text-xs text-gray-600 text-center mt-10">&copy; 2024 TecGurus</p>
             </div>
         </div>
     )

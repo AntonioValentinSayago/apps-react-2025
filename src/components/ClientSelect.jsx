@@ -30,9 +30,14 @@ const ClientSelect = () => {
     };
 
     return (
-        <div>
-            <label htmlFor="client-select">Seleccione un cliente:</label>
-            <select id="client-select" value={selectedClient} onChange={handleClientChange}>
+        <div className="max-w-sm mx-auto">
+            <label htmlFor="client-select" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Seleccione un cliente:</label>
+            <select 
+                id="client-select" 
+                value={selectedClient} 
+                onChange={handleClientChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
                 <option value="">-- Seleccionar cliente --</option>
                 {clients.map((client) => (
                     <option key={client.id} value={client.id}>
