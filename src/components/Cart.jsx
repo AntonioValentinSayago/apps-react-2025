@@ -2,10 +2,11 @@ import { useContext, useState } from "react";
 import { CartContext } from "../context/CartProvider ";
 import { useNavigate } from "react-router-dom";
 import ClientSelect from "./ClientSelect";
+import axios from "axios";
 
 const Cart = () => {
-    const navigate = useNavigate();
-    const { cartItems, removeFromCart } = useContext(CartContext);
+    const navigate = useNavigate(); // Hook para redireccionar
+    const { cartItems, removeFromCart, setCartItems } = useContext(CartContext);
 
     const [selectedClient, setSelectedClient] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -27,14 +28,52 @@ const Cart = () => {
         setSelectedClient(clientId); // Guarda el cliente seleccionado
     };
 
-    const handleSubmitSale = () => {
+    const handleSubmitSale = async () => {
         if (!selectedClient) {
             alert('Please select a client');
             return;
         }
 
         setLoading(true);
-        console.log('iniciando venta')
+        console.log('iniciando venta....')
+        console.log(cartItems)
+        // Construir el cuerpo del POST
+        const saleData = {
+            cliente: {
+              idcliente: selectedClient // El cliente seleccionado
+            },
+            compraproductos: cartItems.map(item => ({
+              cantidad: item.qty, // La cantidad de cada producto
+              costo: item.precio, // El costo o precio del producto
+              producto: {
+                categoria: {
+                  idcategoria: item.categoria.idcategoria // ID de la categoría del producto
+                },
+                idproducto: item.idproducto // ID del producto
+              }
+            })),
+            fecha: new Date().toISOString(), // Fecha actual en formato ISO
+            total: cartItems.reduce((acc, item) => acc + (item.precio * item.qty), 0), // Suma de los totales
+            usuario: {
+              idusuario: 1 // El ID del usuario
+            }
+          };
+          
+        try {
+            const token = localStorage.getItem('authToken'); // Obtiene el token de autorización
+            const response = await axios.post('https://curso.tgconsulting.online/minipos/api/compra/', saleData, {
+                headers: {
+                     Authorization: `Bearer ${token}`
+                }
+            });
+            console.log('Venta realizada con éxito:', response.data);
+            setCartItems([])
+            alert('Venta realizada con éxito');
+        } catch (error) {
+            console.log('Error al enviar la venta', error)
+        } finally {
+            setLoading(false);
+        }
     }
     return (
         <div className="max-w-[720px] mx-auto">

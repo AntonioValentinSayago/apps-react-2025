@@ -43,8 +43,8 @@ const ClientSelect = ({ onClientSelect }) => {
             >
                 <option value="">-- Seleccionar cliente --</option>
                 {clients.map((client) => (
-                    <option key={client.id} value={client.id}>
-                        {client.nombre} {/* Cambia según el campo de nombre en la respuesta de la API */}
+                    <option key={client.idcliente} value={client.idcliente}>
+                        {client.nombre} {client.apaterno} {/* Cambia según el campo de nombre en la respuesta de la API */}
                     </option>
                 ))}
             </select>
