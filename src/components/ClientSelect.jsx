@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const ClientSelect = () => {
+const ClientSelect = ({ onClientSelect }) => {
     const [clients, setClients] = useState([]);
-    const [selectedClient, setSelectedClient] = useState('');
+    const [selectedClient, setSelectedClient] = useState(null);
 
     // Función para obtener los clientes desde la API
     const fetchClients = async () => {
@@ -26,15 +27,17 @@ const ClientSelect = () => {
 
     // Manejar el cambio de selección del cliente
     const handleClientChange = (e) => {
-        setSelectedClient(e.target.value);
+        const clientId = e.target.value;
+        setSelectedClient(clientId);
+        onClientSelect(clientId); // Llama la función pasada desde el padre
     };
 
     return (
         <div className="max-w-sm mx-auto">
             <label htmlFor="client-select" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Seleccione un cliente:</label>
-            <select 
-                id="client-select" 
-                value={selectedClient} 
+            <select
+                id="client-select"
+                value={selectedClient}
                 onChange={handleClientChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
