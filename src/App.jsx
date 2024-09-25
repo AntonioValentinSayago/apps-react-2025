@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Cart from './components/Cart';
 
 import { CartProvider } from './context/CartProvider ';
+import HistorialCompras from './components/HistorialCompras';
 function App() {
 
   const PrivateRoute = ({ children }) => {
@@ -30,6 +31,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Cart />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/historial"
+            element={
+              <PrivateRoute>
+                <HistorialCompras />
               </PrivateRoute>
             }
           />
