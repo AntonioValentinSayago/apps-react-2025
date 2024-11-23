@@ -1,4 +1,4 @@
-# React + Vite - TecGurus 2024 Curso React JS desde cero V 2.4.9
+# React + Vite - TecGurus 2024 Curso React JS desde cero V 3.4.9
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
