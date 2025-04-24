@@ -1,0 +1,15 @@
+{
+  "name": "cafeteria-start-css-flexbox-sass",
+  "version": "1.0.0",
+  "description": "Cafeteria con SASS y CSS GRID",
+  "license": "ISC",
+  "author": "Antonio Valentin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "gulp": "^5.0.0"
+  }
+}
