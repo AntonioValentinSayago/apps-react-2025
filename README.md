@@ -1,4 +1,4 @@
-# Nombre del repositorio 1.0.2
+# Nombre del repositorio 1.0.3
 
 Este repositorio contiene una colección de proyectos desarrollados con React, con el objetivo de demostrar habilidades y conocimientos en esta tecnología.
 
