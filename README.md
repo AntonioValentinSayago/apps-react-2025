@@ -1,4 +1,4 @@
-#Proyectos de REACT + Vite 2026 1.0.7
+#Proyectos de REACT + Vite 2026 1.0.8
 
 Este repositorio contiene una colección de proyectos desarrollados con React, con el objetivo de demostrar habilidades y conocimientos en esta tecnología.
 
